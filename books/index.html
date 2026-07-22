@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="津田 徹 著『理解できればビジネスが10倍加速する SEのトリセツ』書籍紹介">
+  <title>SEのトリセツ | 津田 徹</title>
+  <style>
+    :root {
+      --ink:#0b1634;
+      --gold:#b58a2a;
+      --paper:#fbfaf6;
+      --muted:#6b6d74;
+      --line:#ded9cd;
+      --soft:#f4f1e9;
+      --white:#ffffff;
+    }
+
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",Georgia,serif;
+      line-height:1.9;
+      letter-spacing:.03em;
+    }
+
+    a { color:inherit; text-decoration:none; }
+
+    .wrap {
+      width:min(1080px, calc(100% - 40px));
+      margin:auto;
+    }
+
+    .site-header {
+      position:sticky;
+      top:0;
+      z-index:20;
+      border-bottom:1px solid rgba(222,217,205,.8);
+      background:rgba(251,250,246,.92);
+      backdrop-filter:blur(14px);
+    }
+
+    .nav {
+      min-height:68px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand {
+      font-size:.92rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .home-link {
+      color:var(--muted);
+      font-size:.82rem;
+      letter-spacing:.12em;
+      transition:.2s ease;
+    }
+
+    .home-link:hover { color:var(--ink); }
+
+    .hero {
+      padding:92px 0 110px;
+      background:
+        radial-gradient(circle at 78% 35%, rgba(181,138,42,.13), transparent 25%),
+        linear-gradient(180deg,#fffdf8 0%,#f8f5ee 100%);
+      overflow:hidden;
+    }
+
+    .hero-grid {
+      display:grid;
+      grid-template-columns:.82fr 1.18fr;
+      gap:76px;
+      align-items:center;
+    }
+
+    .book-stage {
+      display:grid;
+      place-items:center;
+      min-height:520px;
+      position:relative;
+    }
+
+    .book-stage::before {
+      content:"";
+      position:absolute;
+      width:420px;
+      height:420px;
+      border:1px solid rgba(181,138,42,.25);
+      border-radius:50%;
+    }
+
+    .book-cover {
+      position:relative;
+      z-index:1;
+      width:min(330px, 78vw);
+      aspect-ratio:1 / 1.42;
+      padding:44px 34px 38px;
+      color:white;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.08), transparent 35%),
+        linear-gradient(160deg,#10234e 0%,#0b1634 62%,#071022 100%);
+      border-radius:4px 12px 12px 4px;
+      box-shadow:
+        -16px 18px 0 rgba(11,22,52,.08),
+        0 35px 70px rgba(11,22,52,.28);
+      transform:perspective(1100px) rotateY(7deg) rotateX(1deg);
+    }
+
+    .book-cover::before {
+      content:"";
+      position:absolute;
+      top:0;
+      bottom:0;
+      left:14px;
+      width:1px;
+      background:rgba(255,255,255,.18);
+    }
+
+    .cover-kicker {
+      color:#d7b769;
+      font-size:.7rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .cover-title {
+      margin:34px 0 0;
+      font-size:clamp(1.65rem,3vw,2.35rem);
+      line-height:1.55;
+      font-weight:500;
+    }
+
+    .cover-se {
+      display:block;
+      margin-top:20px;
+      font-size:clamp(2.4rem,6vw,4.7rem);
+      line-height:1;
+      letter-spacing:.06em;
+      color:#fff;
+    }
+
+    .cover-rule {
+      width:56px;
+      height:1px;
+      margin:32px 0 22px;
+      background:#d7b769;
+    }
+
+    .cover-author {
+      position:absolute;
+      left:34px;
+      bottom:35px;
+      color:#d7b769;
+      font-size:.9rem;
+      letter-spacing:.18em;
+    }
+
+    .eyebrow {
+      color:var(--gold);
+      font-size:.75rem;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    h1 {
+      margin:0;
+      font-size:clamp(2.2rem,5vw,4.5rem);
+      line-height:1.34;
+      font-weight:500;
+      letter-spacing:.015em;
+    }
+
+    .author {
+      margin-top:20px;
+      color:var(--muted);
+      letter-spacing:.1em;
+    }
+
+    .lead {
+      margin:38px 0 0;
+      max-width:650px;
+      font-size:1.08rem;
+      color:#343744;
+    }
+
+    .actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:38px;
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:210px;
+      min-height:56px;
+      padding:12px 24px;
+      border:1px solid var(--ink);
+      border-radius:999px;
+      font-size:.9rem;
+      transition:.2s ease;
+    }
+
+    .btn.primary {
+      background:var(--ink);
+      color:white;
+    }
+
+    .btn:hover { transform:translateY(-2px); }
+
+    section.content {
+      padding:100px 0;
+    }
+
+    .content-grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:70px;
+      align-items:start;
+    }
+
+    .section-label {
+      color:var(--gold);
+      font-size:.72rem;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+
+    h2 {
+      margin:0 0 28px;
+      font-size:clamp(1.7rem,4vw,2.7rem);
+      font-weight:500;
+    }
+
+    .summary p {
+      margin:0 0 18px;
+      color:#343744;
+    }
+
+    .points {
+      display:grid;
+      gap:16px;
+    }
+
+    .point {
+      padding:22px 24px;
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:15px;
+      box-shadow:0 14px 35px rgba(11,22,52,.04);
+    }
+
+    .point strong {
+      display:block;
+      margin-bottom:5px;
+      font-size:1.02rem;
+    }
+
+    .point span {
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .message {
+      padding:100px 0;
+      color:white;
+      background:var(--ink);
+      text-align:center;
+    }
+
+    .message blockquote {
+      max-width:820px;
+      margin:0 auto;
+      font-size:clamp(1.45rem,4vw,2.55rem);
+      line-height:1.75;
+    }
+
+    .message p {
+      margin:24px 0 0;
+      color:#c8ccd7;
+    }
+
+    .detail {
+      padding:88px 0;
+      background:var(--soft);
+    }
+
+    .detail-card {
+      max-width:780px;
+      margin:auto;
+      background:white;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:36px 40px;
+    }
+
+    .detail-row {
+      display:grid;
+      grid-template-columns:130px 1fr;
+      gap:20px;
+      padding:14px 0;
+      border-bottom:1px solid #ece8df;
+    }
+
+    .detail-row:last-child { border-bottom:0; }
+
+    .detail dt {
+      color:var(--muted);
+      font-size:.86rem;
+    }
+
+    .detail dd {
+      margin:0;
+    }
+
+    footer {
+      padding:38px 20px 48px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.8rem;
+    }
+
+    @media (max-width:820px) {
+      .hero { padding:62px 0 82px; }
+      .hero-grid,
+      .content-grid { grid-template-columns:1fr; }
+
+      .hero-grid { gap:38px; }
+      .book-stage { min-height:auto; }
+      .book-stage::before { width:320px; height:320px; }
+      .book-cover { width:min(290px, 75vw); }
+
+      .hero-copy { text-align:center; }
+      .lead { margin-left:auto; margin-right:auto; }
+      .actions { justify-content:center; }
+
+      section.content,
+      .message { padding:76px 0; }
+
+      .detail-card { padding:28px 24px; }
+      .detail-row { grid-template-columns:1fr; gap:4px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="../">Toru Tsuda / Catalyst</a>
+      <a class="home-link" href="../">HOMEへ戻る</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="book-stage" aria-label="書籍表紙イメージ">
+          <div class="book-cover">
+            <div class="cover-kicker">Business × System Engineering</div>
+            <div class="cover-title">
+              理解できれば<br>
+              ビジネスが10倍加速する
+              <span class="cover-se">SEの<br>トリセツ</span>
+            </div>
+            <div class="cover-rule"></div>
+            <div class="cover-author">津田 徹</div>
+          </div>
+        </div>
+
+        <div class="hero-copy">
+          <div class="eyebrow">Book</div>
+          <h1>理解できれば<br>ビジネスが10倍加速する<br>SEのトリセツ</h1>
+          <div class="author">著者　津田 徹</div>
+          <p class="lead">
+            システムエンジニアの思考と仕事の進め方を、
+            ITの専門知識がない方にも理解できる言葉で整理した一冊です。
+            ビジネスとシステム開発の間にある「見えない壁」をほどき、
+            共通言語をつくるための考え方を紹介します。
+          </p>
+
+          <div class="actions">
+            <a class="btn primary"
+               href="https://www.amazon.co.jp/dp/B091932DSD"
+               target="_blank"
+               rel="noopener noreferrer">
+              Amazonで見る
+            </a>
+            <a class="btn" href="../">プロフィールを見る</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="wrap content-grid">
+        <div class="summary">
+          <div class="section-label">Overview</div>
+          <h2>この本について</h2>
+          <p>
+            システム開発では、経営者、事業担当者、プロジェクトマネージャー、
+            エンジニアが、それぞれ異なる視点と言葉を持っています。
+          </p>
+          <p>
+            その違いを理解しないまま進めると、要件のずれ、認識の食い違い、
+            手戻り、予算超過といった問題が起こります。
+          </p>
+          <p>
+            本書では、SEが何を考え、どこを見て仕事をしているのかを整理し、
+            ITとビジネスをつなぐために必要な視点を、実務に沿って解説しています。
+          </p>
+        </div>
+
+        <div>
+          <div class="section-label">Key Themes</div>
+          <h2>主なテーマ</h2>
+          <div class="points">
+            <div class="point">
+              <strong>システム開発の本質を理解する</strong>
+              <span>開発工程ではなく、目的と構造から考える。</span>
+            </div>
+            <div class="point">
+              <strong>SEの思考を知る</strong>
+              <span>エンジニアがどこを見て、何を判断しているかを理解する。</span>
+            </div>
+            <div class="point">
+              <strong>要件定義を共通言語にする</strong>
+              <span>曖昧な構想を、実装できる条件へ変換する。</span>
+            </div>
+            <div class="point">
+              <strong>ITとビジネスをつなぐ</strong>
+              <span>立場の違いを越えて、プロジェクトを前へ進める。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="message">
+      <div class="wrap">
+        <blockquote>
+          システムを理解することは、<br>
+          エンジニアになることではありません。<br>
+          ビジネスを前へ進めるための、<br>
+          共通言語を持つことです。
+        </blockquote>
+        <p>Business begins with understanding.</p>
+      </div>
+    </section>
+
+    <section class="detail">
+      <div class="wrap">
+        <div class="detail-card">
+          <div class="section-label">Book Information</div>
+          <h2>書籍情報</h2>
+          <dl>
+            <div class="detail-row">
+              <dt>書名</dt>
+              <dd>理解できればビジネスが10倍加速する SEのトリセツ</dd>
+            </div>
+            <div class="detail-row">
+              <dt>著者</dt>
+              <dd>津田 徹</dd>
+            </div>
+            <div class="detail-row">
+              <dt>形式</dt>
+              <dd>Kindle版</dd>
+            </div>
+            <div class="detail-row">
+              <dt>販売</dt>
+              <dd>
+                <a href="https://www.amazon.co.jp/dp/B091932DSD"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  Amazon.co.jp
+                </a>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © Toru Tsuda — Catalyst
+  </footer>
+</body>
+</html>
